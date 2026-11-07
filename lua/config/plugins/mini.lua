@@ -38,12 +38,19 @@ require("mini.statusline").setup({
 })
 
 -- text editing
-require("mini.completion").setup({})
 require("mini.comment").setup({}) -- use "gcc" to comment a line
 require("mini.keymap").setup({})
 require("mini.pairs").setup({})
 require("mini.surround").setup({})
--- require("mini.snippets").setup() -- for snippet completion, come back to this
+
+-- snippets
+local gen_loader = require("mini.snippets").gen_loader
+require("mini.snippets").setup({
+  snippets = {
+    gen_loader.from_file("~/.config/nvim/snippets/global.json"),
+    gen_loader.builtin_with_defaults(),
+  },
+})
 
 -- general
 require("mini.cmdline").setup({})
@@ -54,6 +61,13 @@ require("mini.statuscolumn").setup({})
 require("mini.indentscope").setup({})
 require("mini.starter").setup({})
 require("mini.tabline").setup({})
+
+-- autocompletion
+require("mini.completion").setup({
+  window = {
+    info = { border = "rounded" },
+  },
+})
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
