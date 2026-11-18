@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "LuaSnip": {
+      "rev": "0abc8f390b278c3b4aabc4c004ac8a088b65cf24",
+      "src": "https://github.com/L3MON4D3/LuaSnip"
+    },
     "blink.cmp": {
       "rev": "b72ed05dd452690181837d484984144a64709f17",
       "src": "https://github.com/saghen/blink.cmp"
@@ -11,6 +15,10 @@
     "conform.nvim": {
       "rev": "016802de402556da54c36bd7359b441266b01cdd",
       "src": "https://github.com/stevearc/conform.nvim"
+    },
+    "luasnip-latex-snippets.nvim": {
+      "rev": "84d37a68b5858bafe75573f8ea6898ba095fef45",
+      "src": "https://github.com/iurimateus/luasnip-latex-snippets.nvim"
     },
     "markview.nvim": {
       "rev": "ecc5a8867daa1856f8bcc5fdbceca8f5a5ce5f5d",
@@ -45,6 +53,10 @@
     "oil.nvim": {
       "rev": "d3733d933833a0e59b813ecec99341527adf0c28",
       "src": "https://github.com/stevearc/oil.nvim"
+    },
+    "vimtex": {
+      "rev": "9745f3b467f5c24d0d5133e82537a74434da8ae3",
+      "src": "https://github.com/lervag/vimtex"
     },
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",

@@ -74,18 +74,34 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- latex recognition
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  pattern = { "*.tex", "*.sty", "*.cls" },
+  callback = function()
+    vim.bo.syntax = "tex"
+  end,
+})
+
 -- appearance
 vim.pack.add({ { src = "https://github.com/catppuccin/nvim", name = "catppuccin" } })
 vim.cmd.colorscheme("catppuccin-frappe")
 
 -- load plugins
-require("config.plugins.mini")
-require("config.plugins.nvim-treesitter")
-require("config.plugins.nvim-treesitter-textobjects")
-require("config.plugins.nvim-lspconfig")
-require("config.plugins.conform")
-require("config.plugins.oil")
-require("config.plugins.which-key")
-require("config.plugins.neogen")
-require("config.plugins.markview")
-require("config.plugins.nvim-lammps-syntax")
+local plugins = {
+  "nvim-treesitter",
+  "nvim-treesitter-textobjects",
+  "nvim-lspconfig",
+  "conform",
+  "mini",
+  "luasnip",
+  "luasnip-latex-snippets",
+  "oil",
+  "which-key",
+  "markview",
+  "neogen",
+  "vimtex",
+}
+
+for _, name in ipairs(plugins) do
+  require("config.plugins." .. name)
+end

@@ -44,13 +44,15 @@ require("mini.pairs").setup({})
 require("mini.surround").setup({})
 
 -- snippets
-local gen_loader = require("mini.snippets").gen_loader
-require("mini.snippets").setup({
-  snippets = {
-    gen_loader.from_file("~/.config/nvim/snippets/global.json"),
-    gen_loader.builtin_with_defaults(),
-  },
-})
+--local gen_loader = require("mini.snippets").gen_loader
+--require("mini.snippets").setup({
+--  snippets = {
+--    --    gen_loader.builtin_with_defaults(),
+--    gen_loader.from_file("~/.config/nvim/snippets/global.json"),
+--    gen_loader.from_lang(),
+--  },
+--})
+--require("mini.snippets").start_lsp_server()
 
 -- general
 require("mini.cmdline").setup({})
@@ -67,6 +69,14 @@ require("mini.completion").setup({
   window = {
     info = { border = "rounded" },
   },
+  lsp_completion = {
+    snippet_insert = function(snippet)
+      require("luasnip").lsp_expand(snippet)
+    end,
+  },
+})
+vim.lsp.config("*", {
+  capabilities = MiniCompletion.get_lsp_capabilities(),
 })
 
 --------------------------------------------------------------------------------
