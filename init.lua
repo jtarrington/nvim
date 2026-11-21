@@ -55,6 +55,16 @@ vim.api.nvim_create_autocmd("DiagnosticChanged", {
     vim.diagnostic.setqflist({ open = false })
   end,
 })
+
+-- close all other buffers
+vim.keymap.set("n", "<leader>bo", function()
+  local current = vim.api.nvim_get_current_buf()
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if buf ~= current and vim.api.nvim_buf_is_loaded(buf) then
+      pcall(vim.api.nvim_buf_delete, buf, {})
+    end
+  end
+end, { desc = "Close all buffers except current" })
 -- vim.api.nvim_create_autocmd("CursorHold", {
 --   group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
 --   callback = function()
